@@ -283,12 +283,29 @@
       "response": []
     },
     {
-      "name": "C3",
+      "name": "D2",
       "request": {
-        "method": "GET",
+        "method": "PATCH",
         "header": [],
         "url": {
-          "raw": ""
+          "raw": "http://localhost:8080/api/pickups/f27d859a-5c51-489e-bccd-6fb3498ca287/status?status=COLLECTED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "pickups",
+            "f27d859a-5c51-489e-bccd-6fb3498ca287",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "COLLECTED"
+            }
+          ]
         }
       },
       "response": []
@@ -532,6 +549,86 @@
               "key": "sort",
               "value": "pickupDate,desc"
             }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/collectors/57261624-d407-4fce-a833-a15e7e2825fc/waste-types/05b40a48-9a61-4b1c-824b-729ca43cbd2b",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "collectors",
+            "57261624-d407-4fce-a833-a15e7e2825fc",
+            "waste-types",
+            "05b40a48-9a61-4b1c-824b-729ca43cbd2b"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D4",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/collectors/5cc21963-936e-47c1-9ea7-0ed3e19db7c0/truck?truckNumber=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "collectors",
+            "5cc21963-936e-47c1-9ea7-0ed3e19db7c0",
+            "truck"
+          ],
+          "query": [
+            {
+              "key": "truckNumber",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"pickup\": {\r\n    \"id\": \"59498065-e229-4f1d-98d6-0bcc3b84dcd2\"\r\n  },\r\n  \"disposalSite\": \"Kinyinya Landfill\",\r\n  \"weightKg\": 250.5,\r\n  \"disposalDate\": \"2026-10-29\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/disposal-records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "disposal-records"
           ]
         }
       },
