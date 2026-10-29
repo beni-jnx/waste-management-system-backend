@@ -20,6 +20,8 @@ public interface PickupRepository extends JpaRepository<Pickup, UUID> {
 
     boolean existsByCollectorAndPickupDateAndStatusNot(Collector collector, LocalDate pickupDate, PickupStatus status);
 
+    boolean existsByCollectorAndPickupDateAndIdNot(Collector collector, LocalDate pickupDate, UUID id);
+
     long countByStatus(PickupStatus status);
 
     long countByPickupDate(LocalDate date);
