@@ -8,6 +8,7 @@ import com.example.waste.repository.TruckRepository;
 import com.example.waste.repository.WasteTypeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -77,6 +78,10 @@ public class CollectorService {
         Collector collector = collectorOpt.get();
         WasteType wasteType = wasteTypeOpt.get();
 
+        if (collector.getWasteTypes() == null) {
+            collector.setWasteTypes(new ArrayList<>());
+        }
+
         if (collector.getWasteTypes().contains(wasteType)) {
             return "The collector already has that waste type";
         }
@@ -97,12 +102,17 @@ public class CollectorService {
             return "The truck with that truckNumber does not exist";
         }
 
+        Collector collector = collectorOpt.get();
         Truck newTruck = truckOpt.get();
-        if (collectorRepository.existsByTruck(newTruck)) {
-            return "That truck is taken by another collector";
+
+        Optional<Collector> currentOwnerOpt = collectorRepository.findByTruck(newTruck);
+        if (currentOwnerOpt.isPresent()) {
+            Collector currentOwner = currentOwnerOpt.get();
+            if (!currentOwner.getId().equals(collector.getId())) {
+                return "That truck is taken by another collector";
+            }
         }
 
-        Collector collector = collectorOpt.get();
         collector.setTruck(newTruck);
         collectorRepository.save(collector);
         return "Truck changed successfully";
