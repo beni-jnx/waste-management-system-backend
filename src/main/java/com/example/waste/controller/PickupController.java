@@ -58,6 +58,9 @@ public class PickupController {
         if (result.contains("does not exist")) {
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
+        if (result.contains("already has a pickup")) {
+            return new ResponseEntity<>(result, HttpStatus.CONFLICT);
+        }
         return ResponseEntity.ok(result);
     }
 
@@ -71,6 +74,11 @@ public class PickupController {
             return new ResponseEntity<>(result, HttpStatus.CONFLICT);
         }
         return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Pickup>> getPickupsByStatusPath(@PathVariable PickupStatus status) {
+        return ResponseEntity.ok(pickupService.getPickupsByStatus(status));
     }
 
     @GetMapping("/by-status")
