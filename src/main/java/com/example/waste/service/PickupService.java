@@ -50,6 +50,23 @@ public class PickupService {
             return "The pickup with that id does not exist";
         }
         Pickup pickup = existing.get();
+
+        if (pickupDetails.getCollector() != null) {
+            boolean isDateChanged = !pickup.getPickupDate().equals(pickupDetails.getPickupDate());
+            boolean isCollectorChanged = pickup.getCollector() == null || !pickup.getCollector().getId().equals(pickupDetails.getCollector().getId());
+
+            if (isDateChanged || isCollectorChanged) {
+                boolean exists = pickupRepository.existsByCollectorAndPickupDateAndIdNot(
+                        pickupDetails.getCollector(),
+                        pickupDetails.getPickupDate(),
+                        id
+                );
+                if (exists) {
+                    return "Collector already has a pickup on that date";
+                }
+            }
+        }
+
         pickup.setPickupDate(pickupDetails.getPickupDate());
         pickup.setBags(pickupDetails.getBags());
         pickup.setHousehold(pickupDetails.getHousehold());
