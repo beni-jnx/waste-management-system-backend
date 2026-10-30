@@ -63,7 +63,7 @@ public class CollectorController {
         return ResponseEntity.ok(collectorService.getCollectorsByWasteType(name));
     }
 
-    @RequestMapping(value = "/{collectorId}/waste-types/{wasteTypeId}", method = {RequestMethod.POST, RequestMethod.PUT})
+    @PutMapping("/{collectorId}/waste-types/{wasteTypeId}")
     public ResponseEntity<String> addWasteTypeToCollector(@PathVariable UUID collectorId, @PathVariable UUID wasteTypeId) {
         String result = collectorService.addWasteTypeToCollector(collectorId, wasteTypeId);
         if (result.contains("does not exist")) {
@@ -75,7 +75,7 @@ public class CollectorController {
         return ResponseEntity.ok(result);
     }
 
-    @RequestMapping(value = "/{collectorId}/truck", method = {RequestMethod.PATCH, RequestMethod.PUT})
+    @PatchMapping("/{collectorId}/truck")
     public ResponseEntity<String> changeTruck(@PathVariable UUID collectorId, @RequestParam int truckNumber) {
         String result = collectorService.changeTruck(collectorId, truckNumber);
         if (result.contains("does not exist")) {
