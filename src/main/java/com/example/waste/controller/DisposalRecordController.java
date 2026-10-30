@@ -19,25 +19,17 @@ public class DisposalRecordController {
         this.disposalRecordService = disposalRecordService;
     }
 
-    @RequestMapping(value = {"", "/save"}, method = RequestMethod.POST)
+    @PostMapping("/save")
     public ResponseEntity<String> saveDisposalRecord(
-            @RequestParam(required = false) UUID pickupId,
+            @RequestParam UUID pickupId,
             @RequestBody DisposalRecord record) {
 
-        UUID targetPickupId = pickupId;
-        if (targetPickupId == null && record.getPickup() != null) {
-            targetPickupId = record.getPickup().getId();
-        }
+        String result = disposalRecordService.saveDisposalRecord(pickupId, record);
 
-        if (targetPickupId == null) {
-            return new ResponseEntity<>("Pickup ID is required", HttpStatus.BAD_REQUEST);
-        }
-
-        String result = disposalRecordService.saveDisposalRecord(targetPickupId, record);
         if (result.contains("does not exist")) {
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
-        if (result.contains("only for COLLECTED") || result.contains("cannot be")) {
+        if (result.contains("only for COLLECTED") || result.contains("cannot be") || result.contains("must be")) {
             return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(result, HttpStatus.CREATED);
