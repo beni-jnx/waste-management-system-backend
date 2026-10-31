@@ -1,161 +1,18 @@
 {
   "info": {
-    "_postman_id": "271e8666-164b-4750-92fa-1ac4866e164f",
+    "_postman_id": "68e1cb0a-632b-460c-903b-6896e581fa71",
     "name": "waste-management-system-midterm",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "24987748"
   },
   "item": [
     {
-      "name": "Waste Types",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"name\": \"Electronic\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8080/api/waste-types/save",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "waste-types",
-            "save"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Trucks",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"truckNumber\": 3,\r\n  \"plateNumber\": \"RAC789C\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8080/api/trucks/save",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "trucks",
-            "save"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Households",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"headFirstName\": \"Marie\",\r\n  \"headLastName\": \"Keza\",\r\n  \"houseCode\": \"KCK-KIC-0022\",\r\n  \"village\": \"Kicukiro\",\r\n  \"phone\": \"0788444444\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8080/api/households/save",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "households",
-            "save"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Collectors",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/api/collectors/57261624-d407-4fce-a833-a15e7e2825fc/waste-types/1bae3342-568c-477b-873c-39cc9479f776",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "collectors",
-            "57261624-d407-4fce-a833-a15e7e2825fc",
-            "waste-types",
-            "1bae3342-568c-477b-873c-39cc9479f776"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Pickups",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"pickupDate\": \"2026-11-06\",\r\n  \"bags\": 4,\r\n  \"status\": \"REQUESTED\",\r\n  \"household\": { \"id\": \"fccfcd8c-4e4d-492a-9782-2ac460e9616f\" },\r\n  \"collector\": { \"id\": \"b4b22861-dddb-4e87-a6d3-e01b459016d0\" }\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8080/api/pickups/save",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "pickups",
-            "save"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "B1",
+      "name": "B1 Find households by village",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/households/by-village?village=gatenga",
+          "raw": "http://localhost:8080/api/households/by-village?village=Gatenga",
           "protocol": "http",
           "host": [
             "localhost"
@@ -169,7 +26,7 @@
           "query": [
             {
               "key": "village",
-              "value": "gatenga"
+              "value": "Gatenga"
             }
           ]
         }
@@ -177,7 +34,7 @@
       "response": []
     },
     {
-      "name": "B2",
+      "name": "B2 Pickups by status",
       "request": {
         "method": "GET",
         "header": [],
@@ -204,7 +61,7 @@
       "response": []
     },
     {
-      "name": "B3",
+      "name": "B3 Pickups in a date range",
       "request": {
         "method": "GET",
         "header": [],
@@ -235,12 +92,12 @@
       "response": []
     },
     {
-      "name": "C1",
+      "name": "C1 Collectors by waste type",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/collectors/by-waste-type?name=organic",
+          "raw": "http://localhost:8080/api/collectors/by-waste-type?name=Organic",
           "protocol": "http",
           "host": [
             "localhost"
@@ -254,7 +111,7 @@
           "query": [
             {
               "key": "name",
-              "value": "organic"
+              "value": "Organic"
             }
           ]
         }
@@ -262,7 +119,7 @@
       "response": []
     },
     {
-      "name": "C2",
+      "name": "C2 Free trucks",
       "request": {
         "method": "GET",
         "header": [],
@@ -283,12 +140,64 @@
       "response": []
     },
     {
-      "name": "D2",
+      "name": "C3 Unused waste types",
       "request": {
-        "method": "PATCH",
+        "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/pickups/f27d859a-5c51-489e-bccd-6fb3498ca287/status?status=COLLECTED",
+          "raw": "http://localhost:8080/api/waste-types/unused",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "waste-types",
+            "unused"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "C4 Households of collector",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/households/of-collector/b4b22861-dddb-4e87-a6d3-e01b459016d0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "households",
+            "of-collector",
+            "b4b22861-dddb-4e87-a6d3-e01b459016d0"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D1 Create pickup schedule conflict",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"pickupDate\": \"2026-11-01\",\r\n  \"bags\": 2,\r\n  \"household\": {\r\n    \"id\": \"24096e64-f95f-4e0b-b42d-0dd609c4e9a3\"\r\n  },\r\n  \"collector\": {\r\n    \"id\": \"57261624-d407-4fce-a833-a15e7e2825fc\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/pickups/save",
           "protocol": "http",
           "host": [
             "localhost"
@@ -297,7 +206,28 @@
           "path": [
             "api",
             "pickups",
-            "f27d859a-5c51-489e-bccd-6fb3498ca287",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D2 Update pickup status",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/pickups/1813e03a-4a9f-473b-b863-2a375564f9d6/status?status=COLLECTED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "pickups",
+            "1813e03a-4a9f-473b-b863-2a375564f9d6",
             "status"
           ],
           "query": [
@@ -311,12 +241,12 @@
       "response": []
     },
     {
-      "name": "C4",
+      "name": "D3 Add waste type to collector",
       "request": {
-        "method": "GET",
+        "method": "PUT",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/households/of-collector/57261624-d407-4fce-a833-a15e7e2825fc",
+          "raw": "http://localhost:8080/api/collectors/57261624-d407-4fce-a833-a15e7e2825fc/waste-types/9148d6e5-b6d4-42b4-b501-7f4dd0f6acf4",
           "protocol": "http",
           "host": [
             "localhost"
@@ -324,49 +254,45 @@
           "port": "8080",
           "path": [
             "api",
-            "households",
-            "of-collector",
-            "57261624-d407-4fce-a833-a15e7e2825fc"
+            "collectors",
+            "57261624-d407-4fce-a833-a15e7e2825fc",
+            "waste-types",
+            "9148d6e5-b6d4-42b4-b501-7f4dd0f6acf4"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "D1",
+      "name": "D4 Reassign truck to collector",
       "request": {
-        "method": "GET",
+        "method": "PATCH",
         "header": [],
         "url": {
-          "raw": ""
+          "raw": "http://localhost:8080/api/collectors/5cc21963-936e-47c1-9ea7-0ed3e19db7c0/truck?truckNumber=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "collectors",
+            "5cc21963-936e-47c1-9ea7-0ed3e19db7c0",
+            "truck"
+          ],
+          "query": [
+            {
+              "key": "truckNumber",
+              "value": "1"
+            }
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "D2",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": ""
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "D3",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": ""
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "D4",
+      "name": "E1 disposal record",
       "request": {
         "method": "POST",
         "header": [],
@@ -380,7 +306,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/api/disposal-records/save?pickupId=59498065-e229-4f1d-98d6-0bcc3b84dcd2",
+          "raw": "http://localhost:8080/api/disposal-records/save?pickupId=1813e03a-4a9f-473b-b863-2a375564f9d6",
           "protocol": "http",
           "host": [
             "localhost"
@@ -394,7 +320,7 @@
           "query": [
             {
               "key": "pickupId",
-              "value": "59498065-e229-4f1d-98d6-0bcc3b84dcd2"
+              "value": "1813e03a-4a9f-473b-b863-2a375564f9d6"
             }
           ]
         }
@@ -402,12 +328,12 @@
       "response": []
     },
     {
-      "name": "E2",
+      "name": "E2 Disposal records by household",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/disposal-records/household/KCK-GTG-0001",
+          "raw": "http://localhost:8080/api/disposal-records/household/KCK-REM-0099",
           "protocol": "http",
           "host": [
             "localhost"
@@ -417,19 +343,19 @@
             "api",
             "disposal-records",
             "household",
-            "KCK-GTG-0001"
+            "KCK-REM-0099"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "E3",
+      "name": "E3 Delete disposal record",
       "request": {
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/disposal-records/delete/84580805-3a66-4138-9e56-4d624adf64e2",
+          "raw": "http://localhost:8080/api/disposal-records/delete/1813e03a-4a9f-473b-b863-2a375564f9d6",
           "protocol": "http",
           "host": [
             "localhost"
@@ -439,14 +365,14 @@
             "api",
             "disposal-records",
             "delete",
-            "84580805-3a66-4138-9e56-4d624adf64e2"
+            "1813e03a-4a9f-473b-b863-2a375564f9d6"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "F1",
+      "name": "F1 Pickups per status",
       "request": {
         "method": "GET",
         "header": [],
@@ -468,12 +394,12 @@
       "response": []
     },
     {
-      "name": "F2",
+      "name": "F2 Cancel day for collector",
       "request": {
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/pickups/cancel-day?collectorId=57261624-d407-4fce-a833-a15e7e2825fc&date=2026-11-28",
+          "raw": "http://localhost:8080/api/pickups/cancel-day?collectorId=b4b22861-dddb-4e87-a6d3-e01b459016d0&date=2026-11-28",
           "protocol": "http",
           "host": [
             "localhost"
@@ -487,7 +413,7 @@
           "query": [
             {
               "key": "collectorId",
-              "value": "57261624-d407-4fce-a833-a15e7e2825fc"
+              "value": "b4b22861-dddb-4e87-a6d3-e01b459016d0"
             },
             {
               "key": "date",
@@ -499,7 +425,7 @@
       "response": []
     },
     {
-      "name": "Dashboard",
+      "name": "System Dashboard",
       "request": {
         "method": "GET",
         "header": [],
@@ -520,7 +446,7 @@
       "response": []
     },
     {
-      "name": "Pageable",
+      "name": "Pageable Pickups",
       "request": {
         "method": "GET",
         "header": [],
@@ -549,86 +475,6 @@
               "key": "sort",
               "value": "pickupDate,desc"
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "D3",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/api/collectors/57261624-d407-4fce-a833-a15e7e2825fc/waste-types/05b40a48-9a61-4b1c-824b-729ca43cbd2b",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "collectors",
-            "57261624-d407-4fce-a833-a15e7e2825fc",
-            "waste-types",
-            "05b40a48-9a61-4b1c-824b-729ca43cbd2b"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "D4",
-      "request": {
-        "method": "PATCH",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/api/collectors/5cc21963-936e-47c1-9ea7-0ed3e19db7c0/truck?truckNumber=1",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "collectors",
-            "5cc21963-936e-47c1-9ea7-0ed3e19db7c0",
-            "truck"
-          ],
-          "query": [
-            {
-              "key": "truckNumber",
-              "value": "1"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "E1",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"pickup\": {\r\n    \"id\": \"59498065-e229-4f1d-98d6-0bcc3b84dcd2\"\r\n  },\r\n  \"disposalSite\": \"Kinyinya Landfill\",\r\n  \"weightKg\": 250.5,\r\n  \"disposalDate\": \"2026-10-29\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8080/api/disposal-records",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "disposal-records"
           ]
         }
       },
