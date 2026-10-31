@@ -56,9 +56,10 @@ public class PickupService {
             boolean isCollectorChanged = pickup.getCollector() == null || !pickup.getCollector().getId().equals(pickupDetails.getCollector().getId());
 
             if (isDateChanged || isCollectorChanged) {
-                boolean exists = pickupRepository.existsByCollectorAndPickupDateAndIdNot(
+                boolean exists = pickupRepository.existsByCollectorAndPickupDateAndStatusNotAndIdNot(
                         pickupDetails.getCollector(),
                         pickupDetails.getPickupDate(),
+                        PickupStatus.SKIPPED,
                         id
                 );
                 if (exists) {
