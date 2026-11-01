@@ -26,9 +26,19 @@ public class TruckController {
         return new ResponseEntity<>("Truck saved successfully", HttpStatus.CREATED);
     }
 
+    @PostMapping
+    public ResponseEntity<String> createTruckDirect(@RequestBody Truck truck) {
+        return saveTruck(truck);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<Truck>> getAllTrucks() {
         return ResponseEntity.ok(truckService.getAllTrucks());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Truck>> getAllTrucksDirect() {
+        return getAllTrucks();
     }
 
     @GetMapping("/{id}")
@@ -40,6 +50,11 @@ public class TruckController {
         return ResponseEntity.ok(truck.get());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateTruckDirect(@PathVariable UUID id, @RequestBody Truck truck) {
+        return updateTruck(id, truck);
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateTruck(@PathVariable UUID id, @RequestBody Truck truck) {
         String result = truckService.updateTruck(id, truck);
@@ -47,6 +62,11 @@ public class TruckController {
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTruckDirect(@PathVariable UUID id) {
+        return deleteTruck(id);
     }
 
     @DeleteMapping("/delete/{id}")

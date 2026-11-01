@@ -20,17 +20,30 @@ public class HouseholdController {
         this.householdService = householdService;
     }
 
+   
     @PostMapping("/save")
     public ResponseEntity<String> saveHousehold(@RequestBody Household household) {
         householdService.saveHousehold(household);
         return new ResponseEntity<>("Household saved successfully", HttpStatus.CREATED);
     }
 
+    @PostMapping
+    public ResponseEntity<String> createHouseholdDirect(@RequestBody Household household) {
+        return saveHousehold(household);
+    }
+
+    
     @GetMapping("/all")
     public ResponseEntity<List<Household>> getAllHouseholds() {
         return ResponseEntity.ok(householdService.getAllHouseholds());
     }
 
+    @GetMapping
+    public ResponseEntity<List<Household>> getAllHouseholdsDirect() {
+        return getAllHouseholds();
+    }
+
+   
     @GetMapping("/{id}")
     public ResponseEntity<?> getHouseholdById(@PathVariable UUID id) {
         Optional<Household> household = householdService.getHouseholdById(id);
@@ -38,6 +51,12 @@ public class HouseholdController {
             return new ResponseEntity<>("The household with that id does not exist", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(household.get());
+    }
+
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateHouseholdDirect(@PathVariable UUID id, @RequestBody Household household) {
+        return updateHousehold(id, household);
     }
 
     @PutMapping("/update/{id}")
@@ -49,6 +68,11 @@ public class HouseholdController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteHouseholdDirect(@PathVariable UUID id) {
+        return deleteHousehold(id);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteHousehold(@PathVariable UUID id) {
         String result = householdService.deleteHousehold(id);
@@ -58,6 +82,7 @@ public class HouseholdController {
         return ResponseEntity.ok(result);
     }
 
+    
     @GetMapping("/by-village")
     public ResponseEntity<List<Household>> getHouseholdsByVillage(@RequestParam String village) {
         return ResponseEntity.ok(householdService.getHouseholdsByVillage(village));

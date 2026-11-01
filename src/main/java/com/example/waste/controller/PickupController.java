@@ -38,9 +38,19 @@ public class PickupController {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
+    @PostMapping
+    public ResponseEntity<String> createPickupDirect(@RequestBody Pickup pickup) {
+        return savePickup(pickup);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<Pickup>> getAllPickups() {
         return ResponseEntity.ok(pickupService.getAllPickups());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Pickup>> getAllPickupsDirect() {
+        return getAllPickups();
     }
 
     @GetMapping("/{id}")
@@ -50,6 +60,11 @@ public class PickupController {
             return new ResponseEntity<>("The pickup with that id does not exist", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(pickup.get());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updatePickupDirect(@PathVariable UUID id, @RequestBody Pickup pickup) {
+        return updatePickup(id, pickup);
     }
 
     @PutMapping("/update/{id}")
@@ -62,6 +77,11 @@ public class PickupController {
             return new ResponseEntity<>(result, HttpStatus.CONFLICT);
         }
         return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePickupDirect(@PathVariable UUID id) {
+        return deletePickup(id);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -35,6 +35,13 @@ public class DisposalRecordController {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
+    @PostMapping
+    public ResponseEntity<String> saveDisposalRecordDirect(
+            @RequestParam UUID pickupId,
+            @RequestBody DisposalRecord record) {
+        return saveDisposalRecord(pickupId, record);
+    }
+
     @GetMapping("/household/{houseCode}")
     public ResponseEntity<List<DisposalRecord>> getRecordsByHousehold(@PathVariable String houseCode) {
         return ResponseEntity.ok(disposalRecordService.getRecordsByHousehold(houseCode));
@@ -47,5 +54,10 @@ public class DisposalRecordController {
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteDisposalRecordDirect(@PathVariable UUID id) {
+        return deleteDisposalRecord(id);
     }
 }

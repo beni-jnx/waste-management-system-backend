@@ -20,10 +20,22 @@ public class CollectorController {
         this.collectorService = collectorService;
     }
 
+    
+    @PostMapping
+    public ResponseEntity<String> createCollectorDirect(@RequestBody Collector collector) {
+        return saveCollector(collector);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<String> saveCollector(@RequestBody Collector collector) {
         collectorService.saveCollector(collector);
         return new ResponseEntity<>("Collector saved successfully", HttpStatus.CREATED);
+    }
+
+    
+    @GetMapping
+    public ResponseEntity<List<Collector>> getAllCollectorsDirect() {
+        return getAllCollectors();
     }
 
     @GetMapping("/all")
@@ -31,6 +43,7 @@ public class CollectorController {
         return ResponseEntity.ok(collectorService.getAllCollectors());
     }
 
+   
     @GetMapping("/{id}")
     public ResponseEntity<?> getCollectorById(@PathVariable UUID id) {
         Optional<Collector> collector = collectorService.getCollectorById(id);
@@ -38,6 +51,12 @@ public class CollectorController {
             return new ResponseEntity<>("The collector with that id does not exist", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(collector.get());
+    }
+
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateCollectorDirect(@PathVariable UUID id, @RequestBody Collector collector) {
+        return updateCollector(id, collector);
     }
 
     @PutMapping("/update/{id}")
@@ -49,6 +68,12 @@ public class CollectorController {
         return ResponseEntity.ok(result);
     }
 
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCollectorDirect(@PathVariable UUID id) {
+        return deleteCollector(id);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCollector(@PathVariable UUID id) {
         String result = collectorService.deleteCollector(id);
@@ -58,6 +83,7 @@ public class CollectorController {
         return ResponseEntity.ok(result);
     }
 
+    
     @GetMapping("/by-waste-type")
     public ResponseEntity<List<Collector>> getCollectorsByWasteType(@RequestParam String name) {
         return ResponseEntity.ok(collectorService.getCollectorsByWasteType(name));
