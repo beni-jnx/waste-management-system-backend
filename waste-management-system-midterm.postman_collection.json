@@ -479,6 +479,27 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "A2",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/households/3f7f6c4e-912a-4040-8053-f08547a88d1c",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "households",
+            "3f7f6c4e-912a-4040-8053-f08547a88d1c"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
