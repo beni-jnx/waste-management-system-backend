@@ -483,10 +483,19 @@
     {
       "name": "A2",
       "request": {
-        "method": "DELETE",
+        "method": "POST",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"pickupDate\": \"2026-12-15\",\r\n  \"household\": {\r\n    \"id\": \"134bff14-e092-4996-8094-2e63b99dae07\",\r\n    \"headFirstName\": \"David\",\r\n    \"headLastName\": \"Habimana\",\r\n    \"houseCode\": \"KCK-GTG-0100\",\r\n    \"village\": \"Gatenga\",\r\n    \"phone\": \"0788999999\"\r\n  },\r\n  \"collector\": {\r\n    \"id\": \"b4b22861-dddb-4e87-a6d3-e01b459016d0\",\r\n    \"firstName\": \"Fabrice\",\r\n    \"lastName\": \"Manzi\",\r\n    \"phone\": \"0788123456\"\r\n  },\r\n  \"wasteType\": {\r\n    \"id\": \"1bae3342-568c-477b-873c-39cc9479f776\",\r\n    \"typeName\": \"Electronic Waste\",\r\n    \"description\": \"Discarded electronic devices\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
-          "raw": "http://localhost:8080/api/households/3f7f6c4e-912a-4040-8053-f08547a88d1c",
+          "raw": "http://localhost:8080/api/pickups/save",
           "protocol": "http",
           "host": [
             "localhost"
@@ -494,8 +503,8 @@
           "port": "8080",
           "path": [
             "api",
-            "households",
-            "3f7f6c4e-912a-4040-8053-f08547a88d1c"
+            "pickups",
+            "save"
           ]
         }
       },
