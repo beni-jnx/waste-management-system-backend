@@ -92,14 +92,13 @@ public class SeedData {
             Household h4 = householdRepository.save(createHousehold("Marie", "Keza", "KCK-KIC-0022", "Kicukiro", "0788444444"));
             Household h5 = householdRepository.save(createHousehold("Claude", "Gakwaya", "KCK-KIC-0099", "Kicukiro", "0788555555"));
 
-            // Pickup 1 - First COLLECTED pickup
+            
             Pickup p1 = createPickup(LocalDate.of(2026, 10, 20), 3, h1, c1, PickupStatus.COLLECTED);
             p1 = pickupRepository.save(p1);
 
             Pickup p2 = createPickup(LocalDate.of(2026, 10, 20), 2, h2, c1, PickupStatus.SKIPPED);
             pickupRepository.save(p2);
 
-            // Pickup 3 - Second COLLECTED pickup (assigned to collector c2 on Oct 25, 2026)
             Pickup p3 = createPickup(LocalDate.of(2026, 10, 25), 4, h1, c2, PickupStatus.COLLECTED);
             p3 = pickupRepository.save(p3);
 
@@ -124,7 +123,7 @@ public class SeedData {
             Pickup p10 = createPickup(LocalDate.of(2026, 10, 29), 2, h5, c1, PickupStatus.REQUESTED);
             pickupRepository.save(p10);
 
-            // Disposal Record 1
+            
             DisposalRecord dr1 = new DisposalRecord();
             dr1.setPickup(p1);
             dr1.setWasteName("Plastic bottles");
@@ -133,7 +132,7 @@ public class SeedData {
             dr1.setDisposedDate(LocalDate.of(2026, 10, 20));
             disposalRecordRepository.save(dr1);
 
-            // Disposal Record 2 (Associated with p3)
+           
             DisposalRecord dr2 = new DisposalRecord();
             dr2.setPickup(p3);
             dr2.setWasteName("Glass bottles & jars");
