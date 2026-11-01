@@ -117,7 +117,7 @@ public class SeedData {
             Pickup p8 = createPickup(LocalDate.of(2026, 11, 1), 1, h3, c1, PickupStatus.REQUESTED);
             pickupRepository.save(p8);
 
-            Pickup p9 = createPickup(LocalDate.of(2026, 10, 30), 3, h4, c2, PickupStatus.REQUESTED);
+            Pickup p9 = createPickup(LocalDate.of(2026, 10, 30), 3, h4, c2, PickupStatus.ASSIGNED);
             pickupRepository.save(p9);
 
             Pickup p10 = createPickup(LocalDate.of(2026, 10, 29), 2, h5, c1, PickupStatus.REQUESTED);
